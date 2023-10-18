@@ -1,8 +1,8 @@
 <template>
   <div>
       <div class="container">
-        <Navbar/>
-        
+        <Navbar v-if="!isLogin"/>
+
         <RouterView/>
       </div>
   </div>
@@ -14,23 +14,15 @@ export default {
   components: {Navbar},
   data(){
     return {
-      isLogin: false,
-      isRegister: false
+      isLogin: false
     }
   },
-  computed: {
-    isLoginCheck(){
-      if(this.$route.name == 'login')
+  watch: {
+    $route (){
+      if(this.$route.name == 'login' || this.$route.name == 'register')
         this.isLogin = true;
       else
         this.isLogin = false;
-    },
-    isRegisterCheck(){
-      if(this.$route.name == 'register')
-        this.isRegister = true;
-      else
-        this.isRegister = false;
-      
     }
   }
 }

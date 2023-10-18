@@ -1,4 +1,5 @@
 import { createStore } from 'vuex'
+import auth from '@/modules/auth'
 
 const store = createStore({
   state () {
@@ -13,6 +14,9 @@ const store = createStore({
     decrement (state) {
       state.count--
     }
+  },
+  modules: {
+    auth,
   }
 })
 

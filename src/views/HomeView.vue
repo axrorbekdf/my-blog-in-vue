@@ -14,7 +14,8 @@ export default {
     },
     methods: {
       increament(){
-        this.$store.commit('increment')
+        // this.$store.commit('increment')
+        this.$store.dispatch('increment')
       },
       decreament(){
         this.$store.commit('decrement')

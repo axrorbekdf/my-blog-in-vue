@@ -14,7 +14,7 @@
 
             <Input :type="'password'" :label="'Parol'" />
             
-            <Button>Ro'yxatdan o'tish</Button>
+            <Button @click="submitHandler">Ro'yxatdan o'tish</Button>
             <p class="mt-5 mb-3 text-body-secondary">© <b>2017–2023</b></p>
         </form>
     </main>
@@ -27,7 +27,22 @@ export default {
         return{
             logo: logo
         }
+    },
+    methods: {
+        submitHandler(e){
+            e.preventDefault();
+            
+            const data = {
+                username: "ahrorbekdf",
+                email: "axrorbekdf@gmail.com",
+                password: "12345678"
+            }
+
+            this.$store.dispatch('register', data);
+        }
     }
+
+
 }
 </script>
 <style>

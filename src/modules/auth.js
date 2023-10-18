@@ -1,3 +1,5 @@
+import AuthService from "@/service/auth";
+
 const state = {
     isLoading: false
 };
@@ -11,6 +13,11 @@ const mutations = {
 const actions = {
     setLoading({commit}){
         commit('setLoading');
+    },
+
+
+    register(context, user){
+        AuthService.register(user);
     }
 };
 

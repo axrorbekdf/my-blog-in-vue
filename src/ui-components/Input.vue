@@ -1,7 +1,7 @@
 <template>
     <div class="form-floating mb-2">
-        <input :type="type" class="form-control" id="floatingInput" @input="updateInput" :value="modelValue">
-        <label for="floatingInput">{{ label }}</label>
+        <input :type="type" class="form-control" :id="'input'+label" @input="updateInput" :value="modelValue" :placeholder="label">
+        <label :for="'input'+label">{{ label }}</label>
     </div>
 </template>
 <script>

@@ -28,6 +28,11 @@ export default {
             logo: logo
         }
     },
+    computed:{
+        errors(){
+            return this.$store.auth.errors;
+        }
+    },
     methods: {
         submitHandler(e){
             e.preventDefault();
@@ -38,7 +43,13 @@ export default {
                 password: "12345678"
             }
 
-            this.$store.dispatch('register', data);
+            this.$store.dispatch('register', data)
+            .then(data => {
+                console.log(data.user)
+            })
+            .catch(data => {
+                console.log(data.errors)
+            });
         }
     }
 

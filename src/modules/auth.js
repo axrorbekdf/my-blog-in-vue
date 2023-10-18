@@ -8,7 +8,14 @@ const mutations = {
     }
 };
 
+const actions = {
+    setLoading({commit}){
+        commit('setLoading');
+    }
+};
+
 export default {
     state,
-    mutations
+    mutations,
+    actions,
 }

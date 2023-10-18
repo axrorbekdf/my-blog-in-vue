@@ -15,6 +15,11 @@ const store = createStore({
       state.count--
     }
   },
+  actions: {
+    increment(context){
+      context.commit('increment')
+    }
+  },
   modules: {
     auth,
   }

@@ -8,11 +8,13 @@
 
             <h3 class="h3 mb-3 fw-normal mt-4">Ro'yxatdan o'tish</h3>
 
-            <Input :type="'text'" :label="'Ism'" />
+            <span v-for="error in errors">{{ error }}</span>
 
-            <Input :type="'email'" :label="'Email'" />
+            <Input v-model="username" :type="'text'" :label="'Ism'" />
 
-            <Input :type="'password'" :label="'Parol'" />
+            <Input v-model="email" :type="'email'" :label="'Email'" />
+
+            <Input v-model="password" :type="'password'" :label="'Parol'" />
             
             <Button @click="submitHandler">Ro'yxatdan o'tish</Button>
             <p class="mt-5 mb-3 text-body-secondary">© <b>2017–2023</b></p>
@@ -25,22 +27,23 @@ export default {
     name: 'register',
     data(){
         return{
-            logo: logo
+            logo: logo,
+            errors: null,
+            username: '',
+            email: '',
+            password: '',
         }
     },
     computed:{
-        errors(){
-            return this.$store.auth.errors;
-        }
     },
     methods: {
         submitHandler(e){
             e.preventDefault();
             
             const data = {
-                username: "ahrorbekdf",
-                email: "axrorbekdf@gmail.com",
-                password: "12345678"
+                username: this.username,
+                email: this.email,
+                password: this.password
             }
 
             this.$store.dispatch('register', data)

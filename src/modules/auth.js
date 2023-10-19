@@ -16,13 +16,7 @@ const mutations = {
     },
     registerFailure(state, data){
         state.isLoading = false;
-        // state.errors = data.errors
-
-        const errors = {};
-        for(var prop in data.errors){
-            errors[prop] = prop+" "+data.errors[prop][0];
-        }
-        state.errors = errors;
+        state.errors = data.errors
     },
 };
 

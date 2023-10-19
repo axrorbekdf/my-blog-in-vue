@@ -8,7 +8,7 @@
 
             <h3 class="h3 mb-3 fw-normal mt-4">Ro'yxatdan o'tish</h3>
 
-            <span v-for="error in errors">{{ error }}</span>
+            <ValidationError v-if="validationErrors" :errors="validationErrors" />
 
             <Input v-model="username" :type="'text'" :label="'Ism'" />
 
@@ -23,18 +23,23 @@
 </template>
 <script>
 import { logo } from '@/constants';
+import ValidationError from '@/components/ValidationError.vue';
+
 export default {
-    name: 'register',
+    name: 'Register',
+    components:{ ValidationError },
     data(){
         return{
             logo: logo,
-            errors: null,
             username: '',
             email: '',
             password: '',
         }
     },
     computed:{
+        validationErrors(){
+            return this.$store.state.auth.errors;
+        }
     },
     methods: {
         submitHandler(e){

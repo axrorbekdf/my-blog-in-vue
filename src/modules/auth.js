@@ -5,6 +5,7 @@ const state = {
     isLoading: false,
     user: null,
     errors: null,
+    isLoggedIn: null,
 };
 
 const mutations = {
@@ -12,26 +13,35 @@ const mutations = {
         state.isLoading = true;
         state.user = null;
         state.errors = null;
+        state.isLoggedIn = null;
     },
     loginSuccess(state, data){
         state.isLoading = false;
         state.user = data.user;
+        state.isLoggedIn = true;
+        
     },
     loginFailure(state, data){
         state.isLoading = false;
         state.errors = data.errors
+        state.isLoggedIn = false;
     },
 
     registerStart(state){
         state.isLoading = true;
+        state.user = null;
+        state.errors = null;
+        state.isLoggedIn = null;
     },
     registerSuccess(state, data){
         state.isLoading = false;
         state.user = data.user;
+        state.isLoggedIn = true;
     },
     registerFailure(state, data){
         state.isLoading = false;
-        state.errors = data.errors
+        state.errors = data.errors;
+        state.isLoggedIn = false;
     },
 };
 

@@ -7,7 +7,7 @@
         
         <nav class="d-inline-flex mt-4 mt-md-0 ms-md-auto">
             <template v-if="isLoggedIn">
-                    {{ user.username }}
+                <RouterLink :to="{name: 'home'}" class="me-3 py-2 link-body-emphasis text-decoration-none">{{ user.username }}</RouterLink>
             </template>
             <template v-else>
                 <RouterLink :to="{name: 'login'}" class="me-3 py-2 link-body-emphasis text-decoration-none">Login</RouterLink>

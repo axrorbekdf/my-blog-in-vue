@@ -13,7 +13,7 @@
 
             <Input v-model="password" :type="'password'" :label="'Parol'" />
             
-            <Button @click="loginHandler">Ro'yxatdan o'tish</Button>
+            <Button @click="loginHandler">Kirish</Button>
             <p class="mt-5 mb-3 text-body-secondary">© <b>2017–2023</b></p>
         </form>
     </main>

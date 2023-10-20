@@ -1,6 +1,6 @@
 export const getItem = key => {
     try{
-        return JSON.stringify(localStorage.getItem(key))
+        return JSON.parse(localStorage.getItem(key))
     }catch(error){
         console.log('Error getting data')
         return null;
@@ -9,8 +9,9 @@ export const getItem = key => {
 
 export const setItem = (key, data) => {
     try{
-        JSON.stringify(localStorage.setItem(key, data))
+        localStorage.setItem(key, JSON.stringify(data))
     }catch(error){
         console.log('Error setting data')
+        return null;
     }
 }

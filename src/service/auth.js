@@ -9,6 +9,10 @@ const AuthService = {
     register(user){
         return axios.post('/users', {user});
     },
+    getUser(){
+        return axios.get('/user')
+    }
+
 }
 
 export default AuthService;

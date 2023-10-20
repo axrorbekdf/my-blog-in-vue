@@ -10,6 +10,9 @@
 <script>
 import {Navbar} from '@/components'
 import { RouterView } from 'vue-router';
+import { mapGetters } from 'vuex';
+import {gettersTypes} from '@/modules/types'
+
 export default {
   components: {Navbar},
   data(){
@@ -24,6 +27,14 @@ export default {
       else
         this.isLogin = false;
     }
+  },
+  computed:{
+        ...mapGetters({
+            isLoggedIn: gettersTypes.isLoggedIn
+        }),
+  },
+  mounted(){
+      this.$store.dispatch('getUser')
   }
 }
 </script>

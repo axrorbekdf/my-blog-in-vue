@@ -19,6 +19,8 @@
 <script>
 import { logo } from '../constants';
 import { mapState } from 'vuex';
+import { mapGetters } from 'vuex';
+import {gettersTypes} from '@/modules/types'
 
 export default {
     name: "Navbar",
@@ -29,8 +31,26 @@ export default {
     },
     computed:{
         ...mapState({
-            user: state => state.auth.user,
-            isLoggedIn: state => state.auth.isLoggedIn,
+            // user: state => state.auth.user,
+            // isLoggedIn: state => state.auth.isLoggedIn,
+        }),
+
+        // currentUser(){
+        //     return this.$store.getters[gettersTypes.currentUser];
+        // },
+
+        // isLoggedIn(){
+        //     return this.$store.getters[gettersTypes.isLoggedIn];
+        // },
+
+        // isAnonymous(){
+        //     return this.$store.getters[gettersTypes.isAnonymous];
+        // },
+
+        ...mapGetters({
+            currentUser: gettersTypes.currentUser,
+            isLoggedIn: gettersTypes.isLoggedIn,
+            isAnonymous: gettersTypes.isAnonymous,
         }),
     },
     methods:{

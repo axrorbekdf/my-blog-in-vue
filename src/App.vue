@@ -15,7 +15,7 @@ export default {
   components: {Navbar},
   data(){
     return {
-      isLogin: false
+      isLoginPage: false
     }
   },
   watch: {

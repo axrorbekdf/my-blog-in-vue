@@ -53,11 +53,11 @@ export default {
             isAnonymous: gettersTypes.isAnonymous,
         }),
     },
-    methods:{
-        toHomeHandler(){
-            return this.$router.push('/')
-        }
-    }
+    // methods:{
+    //     toHomeHandler(){
+    //         return this.$router.push('/')
+    //     }
+    // }
 }
 </script>
 <style>

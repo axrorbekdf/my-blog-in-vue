@@ -20,6 +20,9 @@
 </template>
 <script>
 import ValidationError from '@/components/ValidationError.vue';
+import { mapState } from 'vuex';
+import {gettersTypes} from '@/modules/types'
+
 export default {
     name: 'Login',
     components:{ ValidationError },
@@ -30,9 +33,13 @@ export default {
         };
     },
     computed:{
-        validationErrors(){
-            return this.$store.state.auth.errors;
-        }
+        // validationErrors(){
+        //     return this.$store.state.auth.errors;
+        // }
+
+        ...mapState({
+            validationErrors: (state) => state.auth.errors
+        })
     },
     methods: {
         loginHandler(e){

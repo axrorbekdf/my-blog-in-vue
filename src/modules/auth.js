@@ -18,7 +18,11 @@ const getters = {
     },
     [gettersTypes.isAnonymous]: (state) => {
         return state.isLoggedIn === false;
-    }
+    },
+    [gettersTypes.validationError]: (state) => {
+        return state.errors;
+    },
+
 };
 
 

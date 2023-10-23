@@ -24,6 +24,8 @@
 <script>
 import { logo } from '@/constants';
 import ValidationError from '@/components/ValidationError.vue';
+import { mapGetters } from 'vuex';
+import {gettersTypes} from '@/modules/types'
 
 export default {
     name: 'Register',
@@ -37,9 +39,12 @@ export default {
         }
     },
     computed:{
-        validationErrors(){
-            return this.$store.state.auth.errors;
-        }
+        // validationErrors(){
+        //     return this.$store.state.auth.errors;
+        // }
+        ...mapGetters({
+            validationErrors: gettersTypes.validationError
+        })
     },
     methods: {
         submitHandler(e){

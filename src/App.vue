@@ -1,7 +1,7 @@
 <template>
   <div>
       <div class="container">
-        <Navbar v-if="!isLogin"/>
+        <Navbar v-if="!isLoginPage"/>
 
         <RouterView/>
       </div>
@@ -10,8 +10,6 @@
 <script>
 import {Navbar} from '@/components'
 import { RouterView } from 'vue-router';
-import { mapGetters } from 'vuex';
-import {gettersTypes} from '@/modules/types'
 
 export default {
   components: {Navbar},
@@ -23,15 +21,10 @@ export default {
   watch: {
     $route (){
       if(this.$route.name == 'login' || this.$route.name == 'register')
-        this.isLogin = true;
+        this.isLoginPage = true;
       else
-        this.isLogin = false;
+        this.isLoginPage = false;
     }
-  },
-  computed:{
-        ...mapGetters({
-            isLoggedIn: gettersTypes.isLoggedIn
-        }),
   },
   mounted(){
       this.$store.dispatch('getUser')

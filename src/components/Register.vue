@@ -39,7 +39,7 @@ export default {
         }
     },
     created(){
-        if(!this.isLoggedIn){
+        if(this.isLoggedIn){
             return this.$router.push('/')
         }
     },
@@ -48,7 +48,7 @@ export default {
         //     return this.$store.state.auth.errors;
         // }
         ...mapGetters({
-            currentUser: gettersTypes.currentUser,
+            isLoggedIn: gettersTypes.isLoggedIn,
             validationErrors: gettersTypes.validationError
         })
     },

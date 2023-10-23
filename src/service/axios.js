@@ -1,8 +1,9 @@
 import axios from 'axios'
-import {apiPoint} from '@/constants'
+import {apiPoint, localApiPoint} from '@/constants'
 import {getItem} from '@/helpers/persistaneStorage'
 
-axios.defaults.baseURL = apiPoint;
+
+axios.defaults.baseURL = localApiPoint;
 
 axios.interceptors.request.use(config => {
     const token = getItem('token')

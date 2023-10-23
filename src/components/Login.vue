@@ -21,6 +21,7 @@
 <script>
 import ValidationError from '@/components/ValidationError.vue';
 import { mapState } from 'vuex';
+import { mapGetters } from 'vuex';
 import {gettersTypes} from '@/modules/types'
 
 export default {
@@ -32,11 +33,18 @@ export default {
             password: null,
         };
     },
+    created(){
+        if(!this.isLoggedIn){
+            return this.$router.push('/')
+        }
+    },
     computed:{
         // validationErrors(){
         //     return this.$store.state.auth.errors;
         // }
-
+        ...mapGetters({
+            currentUser: gettersTypes.currentUser,
+        }),
         ...mapState({
             validationErrors: (state) => state.auth.errors
         })

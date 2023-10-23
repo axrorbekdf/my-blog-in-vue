@@ -38,11 +38,17 @@ export default {
             password: '',
         }
     },
+    created(){
+        if(!this.isLoggedIn){
+            return this.$router.push('/')
+        }
+    },
     computed:{
         // validationErrors(){
         //     return this.$store.state.auth.errors;
         // }
         ...mapGetters({
+            currentUser: gettersTypes.currentUser,
             validationErrors: gettersTypes.validationError
         })
     },

@@ -21,11 +21,11 @@ const mutations = {
     },
     getArticlesSuccess(state, data){
         state.isLoading = false;
-        state.data = data;
+        state.data = data.articles;
     },
     getArticlesFailure(state, data){
         state.isLoading = false;
-        state.erros = data;
+        state.erros = data.error;
     },
 };
 

@@ -7,4 +7,5 @@ export const gettersTypes = {
 
     // Articles
     errorArticles: '[articles] errorArticles',
+    getDataArticles: '[articles] getDataArticles', 
 } 

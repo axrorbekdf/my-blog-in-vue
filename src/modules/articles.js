@@ -10,6 +10,9 @@ const state = {
 const getters = {
     [gettersTypes.errorArticles]: (state) => {
         return state.errors;
+    },
+    [gettersTypes.getDataArticles]: (state) => {
+        return state.data;
     }
 };
 
@@ -17,7 +20,7 @@ const mutations = {
     getArticlesStart(state){
         state.isLoading = true;
         state.data = null;
-        state.erros = null;
+        state.errors = null;
     },
     getArticlesSuccess(state, data){
         state.isLoading = false;
@@ -25,7 +28,7 @@ const mutations = {
     },
     getArticlesFailure(state, data){
         state.isLoading = false;
-        state.erros = data.error;
+        state.errors = data.error;
     },
 };
 

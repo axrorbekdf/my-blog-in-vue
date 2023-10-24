@@ -3,7 +3,10 @@
         :updateTermHandler="updateTermHandler" 
     />
     <div class="row row-cols-1 row-cols-md-4 g-4">
-        <Articles v-for="article in data" :key="article.id" :article="article"/>
+        <div v-if="isLoading" class="w-100 d-flex justify-content-center" style="margin-top: 25vh;">
+            <Loader />
+        </div>
+        <Articles v-else v-for="article in data" :key="article.id" :article="article"/>
     </div>
 </template>
 <script>
@@ -17,7 +20,7 @@ export default {
     components: {Articles, Filter},
     data(){
         return {
-            term: 'asd',
+            term: '',
         }
     },
     mounted(){

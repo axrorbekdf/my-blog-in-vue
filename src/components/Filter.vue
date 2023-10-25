@@ -4,9 +4,9 @@
             <a class="navbar-brand fw-bold fs-2">All articles</a>
             <form class="d-flex" role="search" @submit.prevent>
                 <input class="form-control me-2" v-model="term" @input="changeTermHandler" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">
+                <Button class="btn-outline-success" type="submit">
                     <i class="fa-solid fa-filter"></i>
-                </button>
+                </Button>
             </form>
         </div>
     </nav>

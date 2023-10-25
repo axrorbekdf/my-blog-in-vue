@@ -1,8 +1,10 @@
 <template>
   <div>
-    Home view {{ counter }}
-    <Button @click="increament">Increase</Button>
-    <Button @click="decreament">Decrease</Button>
+    Home view {{ counter }} <br>
+    <div class="btn-group">
+      <Button @click="increament" class="btn-primary">Increase</Button>
+      <Button @click="decreament" class="btn-primary">Decrease</Button>
+    </div>
   </div>
 </template>
 <script>

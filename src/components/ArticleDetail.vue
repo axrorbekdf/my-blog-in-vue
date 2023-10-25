@@ -5,15 +5,15 @@
                 <p class="fs-1">{{ articleDetail.title }}</p>
             </div>
             <div class="col-md-8 col-12 mt-3">
-                <p class="font-monospace text-opacity-75 fw-bold">Description:</p>
+                <p class="font-monospace opacity-75 fw-bold">Description:</p>
                 <p>{{ articleDetail.description }}</p>
             </div>
             <div class="col-md-2 col-6 mt-3">
-                <p class="font-monospace text-opacity-75 fw-bold">Created At:</p>
+                <p class="font-monospace opacity-75 fw-bold">Created At:</p>
                 <small class="text-body-secondary">{{ new Date(articleDetail.createdAt).toLocaleString('us') }}</small>
             </div>
             <div class="col-md-2 col-6 mt-3">
-                <p class="font-monospace text-opacity-75 fw-bold">Updated At:</p>
+                <p class="font-monospace opacity-75 fw-bold">Updated At:</p>
                 <small class="text-body-secondary">{{ new Date(articleDetail.updatedAt).toLocaleString('us') }}</small>
             </div>
             <div class="col-md-4 col-12 mt-3">
@@ -29,7 +29,7 @@
                 <p class="font-monospace mt-2">{{ articleDetail.author.bio }}</p>
             </div>
             <div class="col-md-8 col-12 mt-3">
-                <p class="font-monospace text-opacity-75 fw-bold">Body:</p>
+                <p class="font-monospace opacity-75 fw-bold">Body:</p>
                 <p>{{ articleDetail.body }}</p>
             </div>
         </div>

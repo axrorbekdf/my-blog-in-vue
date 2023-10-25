@@ -1,11 +1,17 @@
 <template>
-    <button class="btn btn-primary w-100 py-2 mt-2" type="submit">
+    <button class="btn" :type="type">
         <slot></slot>
     </button>
 </template>
 <script>
 export default {
-    name: "Button"
+    name: "Button",
+    props: {
+        type: {
+            type: String,
+            default: 'submit'
+        }
+    }
 }
 </script>
 <style>

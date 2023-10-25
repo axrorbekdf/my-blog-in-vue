@@ -94,11 +94,12 @@ const actions = {
     },
 
     create(context, article){
-        return new Promise(() => {
+        return new Promise((resolve) => {
             context.commit('articlesCrudStart');
             ArticleService.create(article)
-            .then(() => {
+            .then((response) => {
                 context.commit('articlesCrudSuccess');
+                resolve(response.data)
             })
             .catch(() => {
                 context.commit('articlesCrudFailure');
@@ -107,11 +108,12 @@ const actions = {
     },
 
     update(context, slug, data){
-        return new Promise(() => {
+        return new Promise((resolve) => {
             context.commit('articlesCrudStart');
             ArticleService.update(slug, data)
             .then(() => {
                 context.commit('articlesCrudSuccess');
+                resolve()
             })
             .catch(() => {
                 context.commit('articlesCrudFailure');
@@ -120,11 +122,12 @@ const actions = {
     },
 
     delete(context, slug){
-        return new Promise(() => {
+        return new Promise((resolve) => {
             context.commit('articlesCrudStart');
             ArticleService.delete(slug)
             .then(() => {
                 context.commit('articlesCrudSuccess');
+                resolve()
             })
             .catch(() => {
                 context.commit('articlesCrudFailure');

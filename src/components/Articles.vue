@@ -7,8 +7,11 @@
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
                         <Button :type="'button'" class="btn-sm btn-outline-secondary" @click="navigationHandler">Read article</Button>
-                        <Button  class="btn btn-sm btn-outline-secondary" @click="editHandler">Edit</Button>
-                        <Button  class="btn btn-sm btn-outline-secondary" @click="deleteHandler">Delete</Button>
+                        <div v-if="user.username == article.author.username">
+                            <Button :type="'button'"  class="btn btn-sm btn-outline-secondary" @click="editHandler">Edit</Button>
+                            <Button :type="'button'" class="btn btn-sm btn-outline-secondary" @click="deleteHandler" :disabled="isLoading">Delete</Button>
+                        </div>
+                        
                     </div>
                     <small class="text-body-secondary fw-bold">
                         {{ new Date(article.createdAt).toLocaleString('us', {year: 'numeric', month: '2-digit',day: '2-digit'}) }}
@@ -21,6 +24,7 @@
     
 </template>
 <script>
+import { mapState } from 'vuex';
 export default {
     name: 'Articles',
     props: {
@@ -28,6 +32,12 @@ export default {
             type: Object,
             required: true
         }
+    },
+    computed:{
+        ...mapState({
+            user: (state) => state.auth.user,
+            isLoading: (state) => state.articles.isLoading
+        })
     },
     methods:{
         navigationHandler(){
@@ -39,7 +49,10 @@ export default {
         },
         deleteHandler(){
             this.$store.dispatch('delete', this.article.slug)
-            window.location.reload();
+            .then(() => {
+                this.$store.dispatch('articles')
+            })
+            
         }
     }
 }

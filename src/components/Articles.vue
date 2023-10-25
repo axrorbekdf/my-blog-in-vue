@@ -1,12 +1,11 @@
 <template>
     <div class="col">
-        <div class="card h-100">
-            <img  src="https://www.shutterstock.com/image-vector/flat-black-newspaper-vector-icon-600w-1722435181.jpg" alt="...">
+        <div class="card h-100 fs-6">
+            <img  src="https://www.shutterstock.com/image-vector/flat-black-newspaper-vector-icon-600w-1722435181.jpg" class="rounded" alt="...">
             <div class="card-body" >
-                <h5 class="card-title fw-bold">{{ article.title }}</h5>
-                <p class="card-text">{{ article.description }}</p>
+                <h5 class="card-title">{{ article.title }}</h5>
 
-                <small class="text-body-secondary">{{ article.createdAt }}</small>
+                <small class="text-body-secondary">{{ new Date(article.createdAt).toLocaleString('us') }}</small>
             </div>
             <div class="card-footer">
                 <div class="btn-group">

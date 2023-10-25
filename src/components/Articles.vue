@@ -5,12 +5,14 @@
             <div class="card-body" >
                 <h5 class="card-title fw-bold">{{ article.title }}</h5>
                 <p class="card-text">{{ article.description }}</p>
+
+                <small class="text-body-secondary">{{ article.createdAt }}</small>
             </div>
             <div class="card-footer">
                 <div class="btn-group">
                     <Button class="btn-default" @click="navigationHandler">Read article</Button>
                 </div>
-                <!-- <small class="text-body-secondary">{{ article.createdAt }}</small> -->
+                
             </div>
         </div>
     </div>

@@ -21,6 +21,7 @@ const mutations = {
     getArticlesStart(state){
         state.isLoading = true;
         state.data = null;
+        state.articleDetail = null;
         state.errors = null;
     },
     getArticlesSuccess(state, data){
@@ -35,6 +36,7 @@ const mutations = {
     getArticlesDetailStart(state){
         state.isLoading = true;
         state.articleDetail = null;
+        state.data = null;
         state.errors = null;
     },
     getArticlesDetailSuccess(state, data){

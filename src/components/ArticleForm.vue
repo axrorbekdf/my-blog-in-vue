@@ -5,7 +5,7 @@
                 <Input v-model="title" type="text" label="Title"/>
                 <Textaria v-model="description" label="Description" rows="80"/>
                 <Textaria v-model="body" label="Body" rows="250" />
-                <Button @click="articleFormHandler" class="btn-primary w-100 py-2 mt-2">Save</Button>
+                <Button @click="formHandler" :disabled="isLoading" class="btn-primary w-100 py-2 mt-2">Save</Button>
             </form>
         </div>
     </div>
@@ -14,41 +14,36 @@
 export default {
     name: "ArticleForm",
     props: {
-        title:{
-            type: String,
+        initialValue:{
+            type: Object,
+            required: true
         },
-        description:{
-            type: String,
-        },
-        body:{
-            type: String,
-        },
-        slug:{
-            type: String,
-        },
-        articleHandler: {
+        onSubmitHandler: {
             type: Function,
             required: true
         }
     },
+    computed:{
+        ...mapState({
+            isLoading: (state) => state.articles.isLoading
+        })
+    },
     data(){
         return {
-            title: this.title,
-            description: this.description,
-            body: this.body,
-            slug: this.slug || ''
+            title: this.initialValue.title,
+            description: this.initialValue.description,
+            body: this.initialValue.body,
         }
     },
     methods:{
-        articleFormHandler(){
+        formHandler(){
             const article = {
-                slug: this.slug,
                 title: this.title,
                 description: this.description,
                 body: this.body,
                 tagList: [],
             }
-            this.articleHandler(article);
+            this.onSubmitHandler(article);
         }
     }
 }

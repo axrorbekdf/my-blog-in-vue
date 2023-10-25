@@ -107,10 +107,10 @@ const actions = {
         });
     },
 
-    update(context, article){
+    update(context, data){
         return new Promise((resolve) => {
             context.commit('articlesCrudStart');
-            ArticleService.update(article)
+            ArticleService.update(data)
             .then((response) => {
                 context.commit('articlesCrudSuccess');
                 resolve(response)

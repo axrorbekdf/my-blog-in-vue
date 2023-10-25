@@ -1,52 +1,35 @@
 <template>
     <div>
         <p class="text-center display-3">Edit article</p>
-        <div class="w-50 mx-auto">
-            <form @submit.prevent>
-                <Input v-model="title" type="text" label="Title"/>
-                <Textaria v-model="description" label="Description" rows="80"/>
-                <Textaria v-model="body" label="Body" rows="250" />
-                <Button @click="updateArticleHandler" class="btn-primary w-100 py-2 mt-2">Update</Button>
-            </form>
-        </div>
+        
+        <ArticleForm :onSubmitHandler="updateArticleHandler" :initialValue="initialValue" />
     </div>
 </template>
 <script>
-
+import ArticleForm from './ArticleForm.vue'
 
 export default {
     name: "ArticleUpdateForm",
+    components: {ArticleForm},
     props: {
         articleDetail:{
             type: Object,
             required: true
         }
     },
-    mounted(){
-        this.title = this.articleDetail.title;
-        this.description = this.articleDetail.description;
-        this.body = this.articleDetail.body;
-        this.slug = this.articleDetail.slug;
-    },
-    data(){
-        return {
-            title: '',
-            description: '',
-            body: '',
-            slug: '',
+    computed: {
+        initialValue(){
+            return {
+                title: this.articleDetail.title,
+                description: this.articleDetail.description,
+                body: this.articleDetail.body,
+            }
         }
     },
     methods:{
-        updateArticleHandler(){
-            const article = {
-                slug: this.slug,
-                title: this.title,
-                description: this.description,
-                body: this.body,
-                tagList: [],
-            }
+        updateArticleHandler(article){
             
-            this.$store.dispatch('update', article)
+            this.$store.dispatch('update', {article: article, slug: this.articleDetail.slug})
             .then((response) => {
                 if(response)
                     this.$router.push('/articles')

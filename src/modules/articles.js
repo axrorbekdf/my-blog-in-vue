@@ -2,10 +2,10 @@ import ArticleService from '@/service/articles'
 import { gettersTypes } from "./types";
 
 const state = {
-    data: [],
+    data: null,
     isLoading: false,
     errors: null,
-    articleDetail: [],
+    articleDetail: null,
 };
 
 const getters = {

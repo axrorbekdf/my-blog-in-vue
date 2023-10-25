@@ -23,7 +23,7 @@ export default {
             term: '',
         }
     },
-    mounted(){
+    created(){
         this.$store.dispatch('articles')
     },
     methods:{
@@ -41,10 +41,11 @@ export default {
         },
     },
     computed: {
-        ...mapGetters({
-            data: gettersTypes.getDataArticles,
-        }),
+        // ...mapGetters({
+        //     data: gettersTypes.getDataArticles,
+        // }),
         ...mapState({
+            data: (state) => state.articles.data,
             isLoading: (state) => state.articles.isLoading,
             error: (state) => state.articles.errors,
         })

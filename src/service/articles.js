@@ -10,8 +10,8 @@ const ArticleService = {
     create(article){
         return axios.post(`/articles`, {article});
     },
-    update(slug, article){
-        return axios.put(`/articles/${slug}`, {article});
+    update(article){
+        return axios.put(`/articles/${article.slug}`, {article});
     },
     delete(slug){
         return axios.delete(`/articles/${slug}`);

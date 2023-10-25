@@ -9,12 +9,15 @@
                 <Button @click="createArticleHandler" :disabled="isLoading" class="btn-primary w-100 py-2 mt-2">Save</Button>
             </form>
         </div>
+
     </div>
 </template>
 <script>
+
 import { mapState } from 'vuex';
 export default {
     name: "ArticleCreateForm",
+
     data(){
         return {
             title: '',

@@ -6,11 +6,26 @@
                 <p class="card-text">{{ article.title }}</p>
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
-                        <Button :type="'button'" class="btn-sm btn-outline-secondary" @click="navigationHandler">Read article</Button>
-                        <div v-if="user.username == article.author.username">
-                            <Button :type="'button'"  class="btn btn-sm btn-outline-secondary" @click="editHandler">Edit</Button>
-                            <Button :type="'button'" class="btn btn-sm btn-outline-secondary" @click="deleteHandler" :disabled="isLoading">Delete</Button>
-                        </div>
+                        <Button :type="'button'" class="btn-sm btn-outline-info" @click="navigationHandler">Read article</Button>
+                        
+                        <Button
+                            v-if="user.username == article.author.username" 
+                            :type="'button'"
+                            class="btn btn-sm btn-outline-primary"
+                            @click="editHandler"
+                        >
+                            Edit
+                        </Button>
+                        <Button 
+                            v-if="user.username == article.author.username"
+                            :type="'button'" 
+                            class="btn btn-sm btn-outline-danger" 
+                            @click="deleteHandler" 
+                            :disabled="isLoading"
+                        >
+                            Delete
+                        </Button>
+
                         
                     </div>
                     <small class="text-body-secondary fw-bold">

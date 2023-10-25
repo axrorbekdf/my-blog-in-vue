@@ -107,13 +107,13 @@ const actions = {
         });
     },
 
-    update(context, slug, data){
+    update(context, article){
         return new Promise((resolve) => {
             context.commit('articlesCrudStart');
-            ArticleService.update(slug, data)
-            .then(() => {
+            ArticleService.update(article)
+            .then((response) => {
                 context.commit('articlesCrudSuccess');
-                resolve()
+                resolve(response)
             })
             .catch(() => {
                 context.commit('articlesCrudFailure');

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <p class="text-center display-3">Create article</p>
+        <p class="text-center display-3">Edit article</p>
         <div class="w-50 mx-auto">
             <form @submit.prevent>
                 <Input v-model="title" type="text" label="Title"/>
@@ -12,6 +12,8 @@
     </div>
 </template>
 <script>
+
+
 export default {
     name: "ArticleUpdateForm",
     props: {
@@ -20,28 +22,35 @@ export default {
             required: true
         }
     },
-    created(){
-        this.articleDetail.title = this.title;
-        this.articleDetail.description = this.description;
-        this.articleDetail.body = this.body;
+    mounted(){
+        this.title = this.articleDetail.title;
+        this.description = this.articleDetail.description;
+        this.body = this.articleDetail.body;
+        this.slug = this.articleDetail.slug;
     },
     data(){
         return {
             title: '',
             description: '',
             body: '',
+            slug: '',
         }
     },
     methods:{
         updateArticleHandler(){
             const article = {
+                slug: this.slug,
                 title: this.title,
                 description: this.description,
                 body: this.body,
                 tagList: [],
             }
             
-            this.$store.dispatch('update', article);
+            this.$store.dispatch('update', article)
+            .then((response) => {
+                if(response)
+                    this.$router.push('/articles')
+            });
             
         }
     }

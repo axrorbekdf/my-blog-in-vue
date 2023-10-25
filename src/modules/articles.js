@@ -47,6 +47,16 @@ const mutations = {
         state.isLoading = false;
         state.errors = data.error;
     },
+
+    articlesCrudStart(state){
+        state.isLoading = true;
+    },
+    articlesCrudSuccess(state){
+        state.isLoading = false;
+    },
+    articlesCrudFailure(state){
+        state.isLoading = false;
+    },
 };
 
 const actions = {
@@ -81,7 +91,48 @@ const actions = {
                 reject(error.response.data);
             })
         });
+    },
+
+    create(context, article){
+        return new Promise(() => {
+            context.commit('articlesCrudStart');
+            ArticleService.create(article)
+            .then(() => {
+                context.commit('articlesCrudSuccess');
+            })
+            .catch(() => {
+                context.commit('articlesCrudFailure');
+            })
+        });
+    },
+
+    update(context, slug, data){
+        return new Promise(() => {
+            context.commit('articlesCrudStart');
+            ArticleService.update(slug, data)
+            .then(() => {
+                context.commit('articlesCrudSuccess');
+            })
+            .catch(() => {
+                context.commit('articlesCrudFailure');
+            })
+        });
+    },
+
+    delete(context, slug){
+        return new Promise(() => {
+            context.commit('articlesCrudStart');
+            ArticleService.delete(slug)
+            .then(() => {
+                context.commit('articlesCrudSuccess');
+            })
+            .catch(() => {
+                context.commit('articlesCrudFailure');
+            })
+        });
     }
+
+
 };
 
 export default {

@@ -5,7 +5,8 @@ import {
   RegisterView,
   ArticlesIndexView,
   ArticlesReadView,
-  ArticleFormView
+  ArticleFormView,
+  ArticleUpdateView
 } from '@/views'
 
 const router = createRouter({
@@ -41,6 +42,11 @@ const router = createRouter({
       path: '/create-article',
       name: 'create-article',
       component: ArticleFormView
+    },
+    {
+      path: '/edit-article/:slug',
+      name: 'edit-article',
+      component: ArticleUpdateView
     },
   ]
 })

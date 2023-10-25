@@ -6,14 +6,25 @@
                 <Input v-model="title" type="text" label="Title"/>
                 <Textaria v-model="description" label="Description" rows="80"/>
                 <Textaria v-model="body" label="Body" rows="250" />
-                <Button @click="createArticleHandler" class="btn-primary w-100 py-2 mt-2">Save</Button>
+                <Button @click="updateArticleHandler" class="btn-primary w-100 py-2 mt-2">Update</Button>
             </form>
         </div>
     </div>
 </template>
 <script>
 export default {
-    name: "ArticleForm",
+    name: "ArticleUpdateForm",
+    props: {
+        articleDetail:{
+            type: Object,
+            required: true
+        }
+    },
+    created(){
+        this.articleDetail.title = this.title;
+        this.articleDetail.description = this.description;
+        this.articleDetail.body = this.body;
+    },
     data(){
         return {
             title: '',
@@ -22,14 +33,15 @@ export default {
         }
     },
     methods:{
-        createArticleHandler(){
+        updateArticleHandler(){
             const article = {
                 title: this.title,
                 description: this.description,
                 body: this.body,
                 tagList: [],
             }
-
+            
+            this.$store.dispatch('update', article);
             
         }
     }

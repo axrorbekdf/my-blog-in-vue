@@ -10,8 +10,14 @@
 export default {
     name: "Textaria",
     props: {
-        label: String,
-        rows: Number,
+        label: {
+            type: String,
+            default: ''
+        },
+        rows: {
+            type: Number,
+            default: 25
+        },
         modelValue: [String, Number],
     },
     computed:{

@@ -1,13 +1,13 @@
 <template>
     <div>
-        <ArticleForm/>
+        <ArticleCreateForm/>
     </div>
 </template>
 <script>
 
-import {ArticleForm} from '@/components'
+import {ArticleCreateForm} from '@/components'
 export default {
-    components:{ArticleForm}
+    components:{ArticleCreateForm}
 }
 </script>
 <style>

@@ -4,6 +4,7 @@ export {default as Register} from './Register.vue'
 
 export {default as Articles} from './Articles.vue'
 export {default as ArticleDetail} from './ArticleDetail.vue'
+export {default as ArticleForm} from './ArticleForm.vue'
 
 
 // import Navbar from './Navbar.vue'

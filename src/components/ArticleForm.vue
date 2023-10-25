@@ -1,13 +1,11 @@
 <template>
     <div>
-        <ArticleForm/>
+        Create form page
     </div>
 </template>
 <script>
-
-import {ArticleForm} from '@/components'
 export default {
-    components:{ArticleForm}
+    name: "ArticleForm"
 }
 </script>
 <style>

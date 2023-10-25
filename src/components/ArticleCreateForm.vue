@@ -4,8 +4,8 @@
         <div class="w-50 mx-auto">
             <form @submit.prevent>
                 <Input v-model="title" type="text" label="Title"/>
-                <Textaria v-model="description" label="Description" :rows="80"/>
-                <Textaria v-model="body" label="Body" :rows="250" />
+                <Textaria v-model="description" label="Description" rows="80"/>
+                <Textaria v-model="body" label="Body" rows="250" />
                 <Button @click="createArticleHandler" :disabled="isLoading" class="btn-primary w-100 py-2 mt-2">Save</Button>
             </form>
         </div>

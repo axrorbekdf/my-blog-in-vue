@@ -2,9 +2,10 @@ import ArticleService from '@/service/articles'
 import { gettersTypes } from "./types";
 
 const state = {
-    data: null,
+    data: [],
     isLoading: false,
     errors: null,
+    articleDetail: [],
 };
 
 const getters = {
@@ -30,6 +31,20 @@ const mutations = {
         state.isLoading = false;
         state.errors = data.error;
     },
+
+    getArticlesDetailStart(state){
+        state.isLoading = true;
+        state.articleDetail = null;
+        state.errors = null;
+    },
+    getArticlesDetailSuccess(state, data){
+        state.isLoading = false;
+        state.articleDetail = data.article;
+    },
+    getArticlesDetailFailure(state, data){
+        state.isLoading = false;
+        state.errors = data.error;
+    },
 };
 
 const actions = {
@@ -46,6 +61,22 @@ const actions = {
             .catch((error) => {
                 context.commit('getArticlesFailure', error.response.data)
                 reject(error.response.data)
+            })
+        });
+    },
+
+    details(context, slug){
+        return new Promise((resolve, reject) => {
+            context.commit('getArticlesDetailStart');
+
+            ArticleService.details(slug)
+            .then((response) => {
+                context.commit('getArticlesDetailSuccess', response.data);
+                resolve(response.data.article);
+            })
+            .catch((error) => {
+                context.commit('getArticlesDetailFailure');
+                reject(error.response.data);
             })
         });
     }

@@ -3,7 +3,8 @@ import {
   HomeView, 
   LoginView, 
   RegisterView,
-  ArticlesIndexView
+  ArticlesIndexView,
+  ArticlesReadView
 } from '@/views'
 
 const router = createRouter({
@@ -29,6 +30,11 @@ const router = createRouter({
       path: '/articles',
       name: 'articles',
       component: ArticlesIndexView
+    },
+    {
+      path: '/article/:slug',
+      name: 'articles-read',
+      component: ArticlesReadView
     }
   ]
 })

@@ -7,7 +7,10 @@
                 <p class="card-text">{{ article.description }}</p>
             </div>
             <div class="card-footer">
-                <small class="text-body-secondary">{{ article.createdAt }}</small>
+                <div class="btn-group">
+                    <Button class="btn-default" @click="navigationHandler">Read article</Button>
+                </div>
+                <!-- <small class="text-body-secondary">{{ article.createdAt }}</small> -->
             </div>
         </div>
     </div>
@@ -19,6 +22,11 @@ export default {
         article: {
             type: Object,
             required: true
+        }
+    },
+    methods:{
+        navigationHandler(){
+            this.$router.push(`/article/${this.article.slug}`);
         }
     }
 }

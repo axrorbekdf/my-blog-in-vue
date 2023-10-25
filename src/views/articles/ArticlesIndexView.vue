@@ -6,7 +6,7 @@
         <div v-if="isLoading" class="w-100 d-flex justify-content-center" style="margin-top: 25vh;">
             <Loader />
         </div>
-        <Articles v-else v-for="article in data" :key="article.id" :article="article"/>
+        <Articles v-else v-for="article in onSearchHandler(data, term)" :key="article.id" :article="article"/>
     </div>
 </template>
 <script>
@@ -27,24 +27,17 @@ export default {
         this.$store.dispatch('articles')
     },
     methods:{
-        // onSearchHandler(){
-        //     const old_data = this.$store.state.articles.data;
-        //     const data = JSON.parse(JSON.stringify(this.data)) ? JSON.parse(JSON.stringify(this.data)) : [];
+        onSearchHandler(data, term){
+            
+            if(data.length == 0){
+                return this.data;
+            }
 
-        //     // console.log(data.length);
-        //     // return false;
-        //     if(data.length == 0){
-        //         console.log("yoq");
-        //         console.log(old_data); 
-        //         return this.data;
-        //     }
-
-        //     return data.filter(c => c.title.toLowerCase().indexOf(this.term) > -1);
-        // },
+            return data.filter(c => c.title.toLowerCase().indexOf(this.term) > -1);
+        },
 
         updateTermHandler(term){
             this.term = term
-            console.log(this.term);
         },
     },
     computed: {
